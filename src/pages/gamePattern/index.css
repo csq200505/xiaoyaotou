@@ -1,0 +1,94 @@
+.pattern-page{
+    width: 100%;
+    height: 100%;
+}
+
+.pattern-upDice{
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 32%;
+    position: fixed;
+}
+
+.pattern-downDice{
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 31.25%;
+    position: fixed;
+}
+
+.pattern-back{
+    left: 3%;
+    top: 5%;
+    color: rgba(18, 12, 12, 0.95);
+    font-size: 40px;
+    position: fixed;
+    z-index: 1;
+}
+
+.pattern-text{
+    left: 20%;
+    top: 39%;
+    width: 8%;
+    height: 24%;
+    position: fixed;
+}
+
+.button-icon{
+    float:left;
+    margin-left: -5%;
+    width:30%;
+    height: 90%;
+    position: relative;
+}
+
+.pattern-bottonOne{
+    position:fixed;
+    left: 40%;
+    top: 38%;
+    width: 45%;
+    height: 6.25%;
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(18, 12, 12, 0.95);
+    font-size: 50px;
+    text-align: center;
+    line-height: 175%;
+    font-family: PingFang SC;
+    border: 5px solid rgba(18, 12, 12, 0.95);
+}
+
+.pattern-bottonTwo{
+    position:fixed;
+    left: 40%;
+    top: 48%;
+    width: 45%;
+    height: 6.25%;
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(255, 255, 255, 1);
+    color:rgba(18, 12, 12, 0.95);
+    font-size: 50px;
+    text-align: center;
+    line-height: 175%;
+    font-family: PingFang SC;
+    border: 5px solid rgba(18, 12, 12, 0.95);
+}
+
+.pattern-bottonThree{
+    position:fixed;
+    left: 40%;
+    top: 58%;
+    width: 45%;
+    height: 6.25%;
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(255, 255, 255, 1);
+    color:rgba(18, 12, 12, 0.95);
+    font-size: 50px;
+    text-align: center;
+    line-height: 175%;
+    font-family: PingFang SC;
+    border: 5px solid rgba(18, 12, 12, 0.95);
+}
+

@@ -1,0 +1,41 @@
+.rule-page{
+    width: 100%;
+    height: 100%;
+}
+
+.rule-back{
+    left: 3%;
+    top: 5%;
+    color: rgba(18, 12, 12, 0.95);
+    font-size: 40px;
+    position: fixed;
+}
+
+.rule-headline{
+    left: 30%;
+    top: 15%;
+    width: 40%;
+    height: 5%;
+    position: fixed;
+}
+.rule-swiper{
+    left: 0px;
+    top: 32.5%;
+    width: 100%;
+    height: 32.5%;
+    position: fixed;
+}
+
+.swiper-image{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+.bottom-bg{
+    width: 100%;
+    height:43.75%;
+    position:fixed;
+    z-index: 5;
+    bottom: 0%;
+}

@@ -1,0 +1,64 @@
+.setting-page{
+    width: 100%;
+    height: 100%;
+}
+.setting-headline{
+    left: 40%;
+    top: 15%;
+    width: 20%;
+    height: 5%;
+    position: fixed;
+}
+.button-icon{
+    float:left;
+    margin-left: -5%;
+    width:30%;
+    height: 90%;
+    position: relative;
+}
+.setting-button1{
+    left: 27%;
+    top: 30%;
+    width: 45%;
+    height: 6.25%;
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(51, 51, 51, 1);
+    font-size: 50px;
+    text-align: center;
+    line-height: 175%;
+    font-family: Roboto;
+    border: 5px solid rgba(51, 51, 51, 1);
+    position: fixed;
+    
+}
+.setting-button2{
+    left: 27%;
+    top: 43%;
+    width: 45%;
+    height: 6.25%;
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(51, 51, 51, 1);
+    font-size: 50px;
+    text-align: center;
+    line-height: 175%;
+    font-family: Roboto;
+    border: 5px solid rgba(51, 51, 51, 1);
+    position: fixed;
+}
+.setting-icon{
+    top:56%;
+    left: 48%;
+    width: 70px;
+    height: 70px;
+    position: fixed;
+}
+
+.bottom-bg{
+    width: 100%;
+    bottom: 0px;
+    height:56.25%;
+    position:fixed;
+    z-index: -1;
+}

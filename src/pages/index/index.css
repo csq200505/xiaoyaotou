@@ -1,0 +1,53 @@
+.first{
+  width: 100%;
+  height: 100%;
+}
+
+.upDice{
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 32%;
+  position: fixed;
+}
+
+.downDice{
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 31.25%;
+  position: fixed;
+}
+
+.bottonOne{
+  position:fixed;
+  left: 30%;
+  top: 43%;
+  width: 40%;
+  height: 6.25%;
+  border-radius: 25px 25px 25px 25px;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(18, 12, 12, 0.95);
+  font-size: 50px;
+  text-align: center;
+  line-height: 175%;
+  font-family: PingFang SC;
+  border: 5px solid rgba(18, 12, 12, 0.95);
+}
+
+.bottonTwo{
+  position:fixed;
+  left: 30%;
+  top: 54%;
+  width: 40%;
+  height: 6.25%;
+  border-radius: 25px 25px 25px 25px;
+  background-color: rgba(255, 255, 255, 1);
+  color:rgba(18, 12, 12, 0.95);
+  font-size: 50px;
+  text-align: center;
+  line-height: 175%;
+  font-family: PingFang SC;
+  border: 5px solid rgba(18, 12, 12, 0.95);
+}
+
