@@ -3,12 +3,15 @@ import { useState, useEffect } from "react"
 import { View , Image} from "remax/wechat"
 import '../Block/index.css'
 
+/**
+ *
+ * @author csq
+ */
+
 export interface BlockValue {
     position:number,
     theme:string,
-    value?:number,
-    //当且仅当被吃了之后才传入此值
-    isEaten?:boolean
+    value:any
 }
 
 function equalProps(preProps:any, postProps:any){
@@ -22,34 +25,31 @@ const blockcomp = (props:any) => {
     const href = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/'
     const value  = props.value;
     const onClick = props.onClick;
-    
+
     //初始状态，不为空
     const [ empty, setEmpty ] = useState<boolean>(true);
 
     useEffect(() => {
-        if(value.isEaten!==undefined&&value.isEaten&&!empty){
+        if(value.value == undefined||value.value == null){
             setEmpty(true)
         }
-        else if(value.value !== undefined){
+        else {
             setEmpty(false)
         }
     },[value])
     //获取骰子图
     function getImage():string{
-        if(empty){
-            return href+'white-bg.png';
-        }
-        if(value.value==null){
+        if(empty||value.value == undefined){
             return href+'white-bg.png';
         }
         switch(value.theme){
-            case 'blue':{
-                return href+'r'+value.value+'.jpg'
+            case 'red':{
+                return href+'b'+value.value+'.png'
             }
-            case 'red':
+            case 'blue':
             default:
             {
-                return href +'b'+value.value+'.png'
+                return href +'r'+value.value+'.jpg'
             }
         }
     }
@@ -60,4 +60,4 @@ const blockcomp = (props:any) => {
     )
 }
 
- export const Block = React.memo(blockcomp,equalProps);
+export const Block = React.memo(blockcomp,equalProps);

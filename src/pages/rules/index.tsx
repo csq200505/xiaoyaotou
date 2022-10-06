@@ -2,6 +2,11 @@ import * as React from 'react';
 import { Swiper, SwiperItem, View, Image, Text } from "remax/wechat";
 import * as wx from "remax/wechat";
 
+/**
+ *
+ * @author csq
+ */
+
 const toBack = () => {
     wx.navigateBack();
 }

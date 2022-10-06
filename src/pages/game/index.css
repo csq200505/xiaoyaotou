@@ -11,8 +11,8 @@
 }
 
 .upper-panel{
-    left: 20%;
-    top: 18.75%;
+    left: 18%;
+    top: 16%;
     width: 60%;
     height: 31.25%;
     background-color: #ffffff;
@@ -22,10 +22,16 @@
     border-width: 10px;
     position: fixed;
 }
-
+.middle-dice{
+    left: 41.5%;
+    top: 50.25%;
+    width: 110px;
+    height: 110px;
+    position: fixed;
+}
 .lower-panel{
-    left:20%;
-    top:56.25%;
+    left:18%;
+    top:58.5%;
     width:60%;
     height:31.25%;
     background-color: #ffffff;
@@ -37,29 +43,29 @@
 }
 .oppenent{
     left: 80%;
-    top: 13%;
+    top: 11.5%;
     width: 120px;
     height: 90px;
     position: fixed;
 }
 .me{
     left: 85%;
-    top: 89%;
+    top: 90.5%;
     width: 60px;
     height: 70px;
     position: fixed;
 }
 .biao1{
-    left: 28%;
-    top: 13%;
+    left: 26%;
+    top: 11%;
     width: 46%;
     height: 70px;
     position: fixed;
 }
 
 .biao2{
-    left: 28%;
-    top: 90%;
+    left: 26%;
+    top: 91.5%;
     width: 46%;
     height: 70px;
     position: fixed;

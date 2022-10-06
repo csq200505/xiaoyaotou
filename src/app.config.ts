@@ -5,7 +5,8 @@ const config: AppConfig = {
 'pages/gamePattern/index',
 'pages/rules/index',
 'pages/settings/index',
-'pages/game/index'
+'pages/game/index',
+'pages/summary/index'
   ],
   window: {
     navigationStyle:'custom'

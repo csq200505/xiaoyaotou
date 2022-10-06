@@ -3,7 +3,11 @@ import { View, Text, Image, Button } from 'remax/wechat';
 import styles from './index.css';
 import * as wx from "remax/wechat";
 
-//为了测试，暂时改成去设置页
+/**
+ *
+ * @author csq
+ */
+
 const toGame = () => {
     wx.navigateTo({
         url:'../game/index'

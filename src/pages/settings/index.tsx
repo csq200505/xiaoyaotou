@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 import { View, Image, Button, Text } from 'remax/wechat';
 import * as wx from 'remax/wechat';
+import store from "@/redux/store";
+import {initialGameAct} from "@/redux/gameReducer/actions";
+
+/**
+ *
+ * @author csq
+ */
 
 const toHome = () => {
-    wx.navigateTo({
+    store.dispatch(initialGameAct())
+    wx.redirectTo({
       url:'../index/index'
     })
   }

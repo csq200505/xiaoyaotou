@@ -4,6 +4,11 @@ import styles from './index.css';
 import * as wx from 'remax/wechat'
 import { usePageEvent } from '@remax/framework-shared';
 
+/**
+ *
+ * @author csq
+ */
+
 const toPattern = () => {
   wx.navigateTo({
     url:'../gamePattern/index'
