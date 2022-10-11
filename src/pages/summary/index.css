@@ -2,56 +2,113 @@
     width: 100%;
     height: 100%;
 }
-.setting-headline{
-    left: 40%;
+.gameover{
+    left: 25%;
     top: 15%;
-    width: 20%;
+    width: 50%;
     height: 5%;
     position: fixed;
 }
-.button-icon{
-    float:left;
-    margin-left: -5%;
-    width:30%;
-    height: 90%;
-    position: relative;
+.oppenent{
+    left: 11%;
+    top: 31%;
+    width: 120px;
+    height: 90px;
+    position: fixed;
+}
+.me{
+    left: 15%;
+    top: 45.5%;
+    width: 60px;
+    height: 70px;
+    position: fixed;
+}
+.score1{
+    left: 26%;
+    top: 34%;
+    width: 250px;
+    height: 40px;
+    position: fixed;
+}
+.score2{
+    left: 26%;
+    top: 47%;
+    width: 250px;
+    height: 40px;
+    position: fixed;
+}
+.s1{
+    left: 63%;
+    top: 33%;
+    color: rgb(3, 23, 181);
+    font-size: 50px;
+    position: fixed;
+}
+.s2{
+    left: 63%;
+    top: 46%;
+    color: rgb(190, 51, 38);
+    font-size: 50px;
+    position: fixed;
+}
+.win1{
+    left: 76%;
+    top: 32.5%;
+    width: 70px;
+    height: 80px;
+    position: fixed;
+}
+.win2{
+    left: 76%;
+    top: 45.5%;
+    width: 70px;
+    height: 80px;
+    position: fixed;
 }
 .summary-button1{
-    left: 27%;
-    top: 30%;
-    width: 45%;
+    left: 30%;
+    top: 60%;
+    width: 40%;
     height: 6.25%;
     border-radius: 25px 25px 25px 25px;
     background-color: rgba(255, 255, 255, 1);
-    color: rgba(51, 51, 51, 1);
+    color: rgba(18, 12, 12, 0.95);
     font-size: 50px;
     text-align: center;
     line-height: 175%;
     font-family: Roboto;
-    border: 5px solid rgba(51, 51, 51, 1);
+    border: 5px solid rgba(18, 12, 12, 0.95);
     position: fixed;
 
 }
 .summary-button2{
-    left: 27%;
-    top: 43%;
-    width: 45%;
+    left: 30%;
+    top: 70%;
+    width: 40%;
     height: 6.25%;
     border-radius: 25px 25px 25px 25px;
     background-color: rgba(255, 255, 255, 1);
-    color: rgba(51, 51, 51, 1);
+    color: rgba(18, 12, 12, 0.95);
     font-size: 50px;
     text-align: center;
     line-height: 175%;
     font-family: Roboto;
-    border: 5px solid rgba(51, 51, 51, 1);
+    border: 5px solid rgba(18, 12, 12, 0.95);
     position: fixed;
 }
+.summary-button3{
+    left: 30%;
+    top: 80%;
+    width: 40%;
+    height: 6.25%;
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(18, 12, 12, 0.95);
+    font-size: 50px;
+    text-align: center;
+    line-height: 175%;
+    font-family: Roboto;
+    border: 5px solid rgba(18, 12, 12, 0.95);
+    position: fixed;
 
-.bottom-bg{
-    width: 100%;
-    bottom: 0px;
-    height:56.25%;
-    position:fixed;
-    z-index: -1;
 }

@@ -5,9 +5,10 @@ import * as wx from 'remax/wechat'
 import { useEffect, useState } from "react";
 import store from "@/redux/store";
 import { GameStep, UpdateType } from "@/redux/gameReducer";
-import { checkEaten, countResult, getRandomInt } from "./gameStrategy";
+import { checkEaten, countResult, getRandomInt } from "../game/gameStrategy";
 import { blueTurnAct, blueWinAct, doXiaoUpdate, gameSetAct, initialGameAct, redTurnAct, redWinAct, tiedAct } from "@/redux/gameReducer/actions";
 import Dice from "@/components/Dice";
+import "../game/index.css";
 
 /**
  *
@@ -53,22 +54,22 @@ export default() => {
     useEffect(() => {
         //初始化完成后启动一次
         if(state.gameStep == GameStep.INTITIAL_GAME){
-                const first = getRandomInt()
-                if(first>3){
-                    wx.showToast({
-                        title:'蓝方先手',
-                        icon:'none',
-                        duration:3000
-                    })
-                    store.dispatch(blueTurnAct(0))
-                }else{
-                    wx.showToast({
-                        title:'红方先手',
-                        icon:'none',
-                        duration:3000
-                    })
-                    store.dispatch(redTurnAct(0))
-                }
+            const first = getRandomInt()
+            if(first>3){
+                wx.showToast({
+                    title:'蓝方先手',
+                    icon:'none',
+                    duration:3000
+                })
+                store.dispatch(blueTurnAct(0))
+            }else{
+                wx.showToast({
+                    title:'红方先手',
+                    icon:'none',
+                    duration:3000
+                })
+                store.dispatch(redTurnAct(0))
+            }
         }
     },[])
 
@@ -210,7 +211,8 @@ export default() => {
                        value = {state.value}></Plate>
             </View>
             <View className="middle-dice">
-                <Dice value = {state.value} onClick = {getRandom}></Dice>
+                <Dice value = {state.value} onClick = {getRandom}>
+                </Dice>
             </View>
             <View className="lower-panel">
                 <Plate theme = 'blue'

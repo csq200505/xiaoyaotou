@@ -16,6 +16,13 @@ const toHome = () => {
     })
   }
 
+const restartGame = () => {
+    store.dispatch(initialGameAct())
+    wx.redirectTo({
+        url:'../game/index'
+    })
+}
+
 const toGame = () => {
     wx.navigateBack();
 }
@@ -45,6 +52,11 @@ export default() => {
                         src = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-user.png'
                     />返回游戏</Button>
             <Button className='setting-button2'
+                    onClick={restartGame}><Image
+                className='button-icon'
+                src = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-user.png'
+            />重新开始</Button>
+            <Button className='setting-button3'
                     onClick={toHome}><Image
                         className='button-icon'
                         src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-home.png'

@@ -30,7 +30,7 @@ const blockcomp = (props:any) => {
     const [ empty, setEmpty ] = useState<boolean>(true);
 
     useEffect(() => {
-        if(value.value == undefined||value.value == null){
+        if(value==undefined||value.value == undefined||value.value == null){
             setEmpty(true)
         }
         else {

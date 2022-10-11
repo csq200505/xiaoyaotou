@@ -28,13 +28,14 @@ export default () => {
                     src = "https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/rule2.jpeg"></Image>
                 </SwiperItem>
                 <SwiperItem>
-                    <Image className="swiper-image" 
-                    src = "https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/rule3.jpeg"></Image>
+                    <Image className="swiper-image"
+                           src = "https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/rule4.jpeg"></Image>
                 </SwiperItem>
                 <SwiperItem>
                     <Image className="swiper-image" 
-                    src = "https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/rule4.jpeg"></Image>
+                    src = "https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/rule3.jpeg"></Image>
                 </SwiperItem>
+
             </Swiper>
             <Image className='bottom-bg'
              src = "https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/image2.jpeg"/>

@@ -29,7 +29,7 @@ export default () => {
             <Image className='pattern-downDice'
                    src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/cutgraph4.jpeg'/>
             <Image className='pattern-text'
-                    src='https://i.postimg.cc/j2cNQNzt/moshi.jpg'/>
+                    src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/patternchoose.jpeg'/>
 
             <Button className='pattern-bottonOne'
                     onClick = {toGame}
@@ -45,7 +45,11 @@ export default () => {
                 src = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-one.png'
             />人机对战</Button>
             <Button className='pattern-bottonThree'
-                    onClick = {toGame}
+                    onClick = {() => wx.showToast({
+                        title:'敬请期待！',
+                        icon:'none',
+                        duration:2000
+                    })}
             ><Image
                 className='button-icon'
                 src = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-multiple.png'

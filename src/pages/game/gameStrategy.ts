@@ -35,7 +35,7 @@ export function checkEaten(grid:any[], value:number, index:number):number[]{
 
 
 //算分
-export function countResult(a:any[],b:any[]):string{
+export function countResult(a:any[],b:any[]):any{
     let add=0,sum1=0,sum2=0;
         while(add<9){
             if(a[add]==a[1+add] && a[add]==a[2+add]){
@@ -66,7 +66,5 @@ export function countResult(a:any[],b:any[]):string{
             }
             add+=3;
         }
-        if(sum1>sum2) return 'blue';
-        else if(sum1<sum2) return 'red';
-        else return 'tied';
+        return { blue:sum1, red:sum2 }
 }
