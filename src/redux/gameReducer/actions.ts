@@ -1,15 +1,15 @@
-import { GameStep, UpdateType } from "."
+import {GameStep, GameType, UpdateType} from "."
 
 /**
- *
  * @author csq
  */
-
-export const initialGameAct = () => ({
+export const initialGameAct = (gameType:GameType) => ({
+    gameType:gameType,
     type:GameStep.INTITIAL_GAME
 })
 
-export const blueTurnAct = (currentValue:number) => ({
+export const blueTurnAct = (currentValue:number,able?:boolean) => ({
+    ableToStep: able == undefined ?undefined:able,
     type:GameStep.BLUE_TURN,
     currentValue
 })
@@ -47,9 +47,16 @@ export const doCurrentStepUpdate = (gridBlue:any[], gridRed:any[], modified:any,
 })
 
 //专门进行消消乐
-export const doXiaoUpdate = (modified:any[], toBeUpdated:GameStep) => ({
+export const doXiaoUpdate = (modified:any[], toBeUpdated:GameStep, currentValue:any) => ({
     modified,
     toBeUpdated,
+    currentValue,
     type:GameStep.UPDATE_STEP,
     updateType:UpdateType.XIAO
+})
+
+
+export const setAbleToStep = (able:boolean) => ({
+    type:GameStep.BLUE_TURN,
+    ableToStep:able
 })

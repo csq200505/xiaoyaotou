@@ -3,6 +3,7 @@ import { View, Image, Button, Text } from 'remax/wechat';
 import * as wx from 'remax/wechat';
 import store from "@/redux/store";
 import {initialGameAct} from "@/redux/gameReducer/actions";
+import {GameType} from "@/redux/gameReducer";
 
 /**
  *
@@ -10,16 +11,17 @@ import {initialGameAct} from "@/redux/gameReducer/actions";
  */
 
 const toHome = () => {
-    store.dispatch(initialGameAct())
+    store.dispatch(initialGameAct(GameType.PVP))
     wx.redirectTo({
       url:'../index/index'
     })
   }
 
 const restartGame = () => {
-    store.dispatch(initialGameAct())
+    let gameType = store.getState().combineReducer.game.gameType
+    store.dispatch(initialGameAct(gameType))
     wx.redirectTo({
-        url:'../game/index'
+        url:gameType == GameType.PVP?'../game/index':'../AIGame/index'
     })
 }
 
@@ -61,11 +63,6 @@ export default() => {
                         className='button-icon'
                         src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-home.png'
                     />返回首页</Button>
-            <Image className='setting-icon' 
-            src ={muted==false?'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-sound.png'
-            :'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-mute.png'}
-            onClick={setMute}
-            ></Image>
             <Image className='bottom-bg'
              src = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/image2.jpeg'/>
         </View>
