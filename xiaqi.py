@@ -56,6 +56,7 @@ class Tree(object):
         self.node = node    # Node()，根节点
         self.layernum = layernum
         self.parent = None
+        self.pos = -1
         self.children : list = []
 
     def build_tree(self) -> None:
@@ -80,6 +81,7 @@ class Tree(object):
                         Nodetemp = Node(temptable)
                         Nodetemp.max = is_max
                         Treetemp = Tree(Nodetemp, self.layernum - 1)
+                        Treetemp.pos = j
                         Treetemp.parent = self
                         Treetemp.build_tree()
                         self.children[i].append(Treetemp)
@@ -91,6 +93,7 @@ class Tree(object):
                         Nodetemp = Node(temptable)
                         Nodetemp.max = is_max
                         Treetemp = Tree(Nodetemp, self.layernum - 1)
+                        Treetemp.pos = j
                         Treetemp.parent = self
                         Treetemp.build_tree()
                         self.children[i].append(Treetemp)
@@ -153,14 +156,14 @@ def nextstep(ownboard, otherboard, figure):
         tree.scoreval()
         best = -1
         pos = -1
-        for i in range(3):
+        for i in range(len(tree.children[figure - 1])):
             if tree.children[figure - 1][i].node.val > best:
-                pos = i
+                pos = tree.children[figure - 1][i].pos
                 best = tree.children[figure - 1][i].node.val
 
         for i in range(3):
             if ownboard[pos * 3 + i] == 0:
-                return pos * 3 + i + 1
+                return pos * 3 + i #+1
 
 
 if __name__ == "__main__":
@@ -170,9 +173,9 @@ if __name__ == "__main__":
     # # print(score(table2[0]))
     # # print(score(table2[1]))
     # root = Node(table, None, False)
-    # tree = Tree(root, 4)
+    # tree = Tree(root, 4)1···
     # tree.build_tree()
     # tree.scoreval()
     # a = 1
 
-    print(nextstep([3, 0, 0, 4, 5, 0, 3, 0, 0], [1, 4, 0, 3, 0, 0, 6, 0, 0], 1))
+    print(nextstep([6, 2, 0, 0, 0, 0, 2, 3, 0], [4, 4, 4, 0, 0, 0, 0, 0, 0], 6))
