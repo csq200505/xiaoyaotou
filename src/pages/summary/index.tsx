@@ -4,27 +4,29 @@ import * as wx from "remax/wechat";
 import React, {useEffect, useState} from "react";
 import {Button, Image, View,Text} from "remax/wechat";
 import {countResult} from "@/pages/game/gameStrategy";
+import {GameType} from "@/redux/gameReducer";
 
 /**
  *
  * @author csq
  */
 
+const toGame = () => {
+    wx.navigateBack();
+}
+
 const toHome = () => {
-    store.dispatch(initialGameAct())
+    store.dispatch(initialGameAct(GameType.PVP))
     wx.redirectTo({
         url:'../index/index'
     })
 }
 
-const toGame = () => {
-    wx.navigateBack();
-}
-
 const restartGame = () => {
-    store.dispatch(initialGameAct())
+    let gameType = store.getState().combineReducer.game.gameType
+    store.dispatch(initialGameAct(gameType))
     wx.redirectTo({
-        url:'../game/index'
+        url:gameType == GameType.PVP?'../game/index':'../AIGame/index'
     })
 }
 

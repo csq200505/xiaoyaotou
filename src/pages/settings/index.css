@@ -62,13 +62,6 @@
     border: 5px solid rgba(51, 51, 51, 1);
     position: fixed;
 }
-.setting-icon{
-    top:70%;
-    left: 48%;
-    width: 70px;
-    height: 70px;
-    position: fixed;
-}
 
 .bottom-bg{
     width: 100%;

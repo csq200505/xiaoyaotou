@@ -1,8 +1,7 @@
+import {setAbleToStep} from "@/redux/gameReducer/actions";
 /**
- *
- * @author csq
+ *@author csq
  */
-
 export enum GameStep {
     //游戏初始化
     INTITIAL_GAME = "INITIAL_GAME",
@@ -22,6 +21,12 @@ export enum GameStep {
     UPDATE_STEP = "UPDATE_STEP"
 }
 
+
+export enum GameType{
+    PVP = 0,
+    PVE = 1
+}
+
 export enum UpdateType{
     NORMAL='normal',
     XIAO = 'xiaoxiaole',
@@ -30,6 +35,7 @@ export enum UpdateType{
 
 //游戏状态
 export interface GameState {
+    gameType:GameType,
     gridBlue:any[],
     gridRed:any[],
     type:GameStep,
@@ -38,57 +44,91 @@ export interface GameState {
     //修改位置
     modifiedAt?:any,
     //现在游戏的随机值，仅存在于两个turn的状态中
-    currentValue?:number
+    currentValue?:number,
+    ableToStep?:boolean
 }
 
 const initialState:GameState = {
+    gameType:GameType.PVP,
     gridBlue:[null,null,null,null,null,null,null,null,null],
     gridRed:[null,null,null,null,null,null,null,null,null],
-    type:GameStep.INTITIAL_GAME,
+    type:GameStep.INTITIAL_GAME
 }
 
 const game = (state:GameState = initialState, action:any) => {
     switch(action.type){
+        //定义初始化状态
         case GameStep.INTITIAL_GAME:
-            return initialState
+            return {
+                ...initialState,
+                gameType: action.gameType
+            }
+        //更新状态
         case GameStep.UPDATE_STEP:
             if(action.updateType==UpdateType.XIAO){
+                console.log(action)
                 return {
+                    gameType:state.gameType,
                     gridBlue:state.gridBlue,
                     gridRed:state.gridRed,
-                    type:action.type,
+                    type:GameStep.UPDATE_STEP,
                     toBeUpdated:action.toBeUpdated,
                     updateType:action.updateType,
-                    currentValue:state.currentValue,
+                    currentValue:action.currentValue==undefined?state.currentValue:action.currentValue,
                     modifiedAt:action.modified==undefined?undefined:action.modified
                 }
-            }else{
+            }
+            else{
                 return {
+                    gameType:state.gameType,
                     gridBlue:action.gridBlue,
                     gridRed:action.gridRed,
-                    type:action.type,
+                    type:GameStep.UPDATE_STEP,
                     toBeUpdated:action.toBeUpdated==undefined?state.type:action.toBeUpdated,
                     updateType:action.updateType,
                     currentValue:state.currentValue,
                     modifiedAt:action.modified==undefined?undefined:action.modified
                 }
-            }    
+            }
         case GameStep.GAME_SET:
             return{
-                gridBlue:state.gridBlue,
-                gridRed:state.gridRed,
-                type:action.type
-            }
-        case GameStep.BLUE_TURN:
-        case GameStep.RED_TURN:
-            return{
+                gameType:state.gameType,
                 gridBlue:state.gridBlue,
                 gridRed:state.gridRed,
                 type:action.type,
+            }
+        case GameStep.BLUE_TURN:
+            console.log(state)
+            if(action.ableToStep!=undefined){
+                return{
+                    gameType:state.gameType,
+                    gridBlue:state.gridBlue,
+                    gridRed:state.gridRed,
+                    type:GameStep.BLUE_TURN,
+                    currentValue:action.currentValue ==undefined?state.currentValue:action.currentValue,
+                    ableToStep:action.ableToStep
+                }
+            }else{
+                return{
+                    gameType:state.gameType,
+                    gridBlue:state.gridBlue,
+                    gridRed:state.gridRed,
+                    type:GameStep.BLUE_TURN,
+                    currentValue:action.currentValue ==undefined?state.currentValue:action.currentValue,
+                    ableToStep:state.ableToStep
+                }
+            }
+        case GameStep.RED_TURN:
+            return{
+                gameType:state.gameType,
+                gridBlue:state.gridBlue,
+                gridRed:state.gridRed,
+                type:GameStep.RED_TURN,
                 currentValue:action.currentValue
-            }            
-        default: 
+            }
+        default:
             return {
+                gameType:state.gameType,
                 gridBlue:state.gridBlue,
                 gridRed:state.gridRed,
                 type:action.type
@@ -97,5 +137,3 @@ const game = (state:GameState = initialState, action:any) => {
 }
 
 export default game;
-
-

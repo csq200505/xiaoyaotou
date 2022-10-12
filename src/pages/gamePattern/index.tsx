@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { View, Text, Image, Button } from 'remax/wechat';
-import styles from './index.css';
-import * as wx from "remax/wechat";
+import * as wx from 'remax/wechat';
+import {Button, Image, Text, View} from 'remax/wechat';
+import {initialGameAct} from "@/redux/gameReducer/actions";
+import {GameType} from "@/redux/gameReducer";
+import store from "@/redux/store";
 
 /**
  *
@@ -9,8 +11,15 @@ import * as wx from "remax/wechat";
  */
 
 const toGame = () => {
+    store.dispatch(initialGameAct(GameType.PVP))
     wx.navigateTo({
         url:'../game/index'
+    })
+}
+const toAIGame = () => {
+    store.dispatch(initialGameAct(GameType.PVE))
+    wx.navigateTo({
+        url:'../AIGame/index'
     })
 }
 const toBack = () => {
@@ -39,7 +48,7 @@ export default () => {
             />本地对战</Button>
 
             <Button className='pattern-bottonTwo'
-                    onClick = {toGame}
+                    onClick = {toAIGame}
             ><Image
                 className='button-icon'
                 src = 'https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/icon-one.png'

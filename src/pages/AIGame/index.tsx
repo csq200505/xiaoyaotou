@@ -9,6 +9,8 @@ import { checkEaten, countResult, getRandomInt } from "../game/gameStrategy";
 import { blueTurnAct, blueWinAct, doXiaoUpdate, gameSetAct, initialGameAct, redTurnAct, redWinAct, tiedAct } from "@/redux/gameReducer/actions";
 import Dice from "@/components/Dice";
 import "../game/index.css";
+import AIPlate from "@/components/AIPlate";
+import {sleep} from "@/util";
 
 /**
  *
@@ -23,7 +25,7 @@ const toSetting = () => {
 }
 
 
-export default() => {
+export default function AIGame(){
     //总游戏状态
     let gameState = store.getState().combineReducer.game
     //游戏进度
@@ -53,24 +55,12 @@ export default() => {
 
     useEffect(() => {
         //初始化完成后启动一次
-        if(state.gameStep == GameStep.INTITIAL_GAME){
-            const first = getRandomInt()
-            if(first>3){
-                wx.showToast({
-                    title:'蓝方先手',
-                    icon:'none',
-                    duration:3000
-                })
-                store.dispatch(blueTurnAct(0))
-            }else{
                 wx.showToast({
                     title:'红方先手',
                     icon:'none',
                     duration:3000
                 })
                 store.dispatch(redTurnAct(0))
-            }
-        }
     },[])
 
     //监听全局变化
@@ -96,6 +86,15 @@ export default() => {
             setState({gameStep: GameStep.INTITIAL_GAME, value: null})
         }
 
+        if(gameStep == GameStep.BLUE_TURN){
+            const currentValue = gameState.currentValue
+            if(currentValue == 0) {
+                sleep(1000)
+                const random = getRandomInt()
+                store.dispatch(blueTurnAct(random))
+            }
+        }
+
         //如果游戏处于更新状态中
         if(gameStep == GameStep.UPDATE_STEP){
             const toBeUpdated = gameState.toBeUpdated
@@ -116,7 +115,7 @@ export default() => {
                         //如果是来自按键的更新请求，检查其是否需要消消乐，若需要则发送消消乐事件
                         const eaten = checkEaten(redGrid,currentValue, modifyAt)
                         if(eaten.length!=0){
-                            store.dispatch(doXiaoUpdate(eaten,GameStep.BLUE_TURN))
+                            store.dispatch(doXiaoUpdate(eaten,GameStep.BLUE_TURN, currentValue))
                         }else{
                             checkJump(blueGrid,redGrid,'red',0)
                         }
@@ -130,7 +129,7 @@ export default() => {
                         const modifyAt = gameState.modifiedAt
                         const eaten = checkEaten(blueGrid,currentValue, modifyAt)
                         if(eaten.length!=0){
-                            store.dispatch(doXiaoUpdate(eaten,GameStep.RED_TURN))
+                            store.dispatch(doXiaoUpdate(eaten,GameStep.RED_TURN, currentValue))
                         }else{
                             //交换位置
                             checkJump(blueGrid,redGrid,'blue',0)
@@ -156,7 +155,7 @@ export default() => {
             if(gridBlue.includes(null)&&gridRed.includes(null)){
                 //交换位置
                 if(dispatchTo == 'blue'){
-                    store.dispatch(blueTurnAct(dispatchNum))
+                    store.dispatch(blueTurnAct(dispatchNum,true))
                 }else{
                     store.dispatch(redTurnAct(dispatchNum))
                 }
@@ -206,18 +205,18 @@ export default() => {
         <View className="game-page">
 
             <View className="upper-panel">
-                <Plate theme = 'red'
+                <AIPlate theme = 'red'
                        optAble = {setUpperPlate()}
-                       value = {state.value}></Plate>
+                       value = {state.value}></AIPlate>
             </View>
             <View className="middle-dice">
                 <Dice value = {state.value} onClick = {getRandom}>
                 </Dice>
             </View>
             <View className="lower-panel">
-                <Plate theme = 'blue'
+                <AIPlate theme = 'blue'
                        optAble = {setLowerPlate()}
-                       value = {state.value}></Plate>
+                       value = {state.value}></AIPlate>
             </View>
             <Image className='oppenent'
                    src='https://i.postimg.cc/VvZN7NTx/oppenent.jpg'/>

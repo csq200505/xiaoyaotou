@@ -115,7 +115,7 @@ export default() => {
                         //如果是来自按键的更新请求，检查其是否需要消消乐，若需要则发送消消乐事件
                         const eaten = checkEaten(redGrid,currentValue, modifyAt)
                         if(eaten.length!=0){
-                            store.dispatch(doXiaoUpdate(eaten,GameStep.BLUE_TURN))
+                            store.dispatch(doXiaoUpdate(eaten,GameStep.BLUE_TURN,currentValue))
                         }else{
                             checkJump(blueGrid,redGrid,'red',0)
                         }
@@ -129,7 +129,7 @@ export default() => {
                         const modifyAt = gameState.modifiedAt
                         const eaten = checkEaten(blueGrid,currentValue, modifyAt)
                         if(eaten.length!=0){
-                            store.dispatch(doXiaoUpdate(eaten,GameStep.RED_TURN))
+                            store.dispatch(doXiaoUpdate(eaten,GameStep.RED_TURN,currentValue))
                         }else{
                             //交换位置
                             checkJump(blueGrid,redGrid,'blue',0)

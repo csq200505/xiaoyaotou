@@ -6,11 +6,13 @@ const config: AppConfig = {
 'pages/rules/index',
 'pages/settings/index',
 'pages/game/index',
-'pages/summary/index'
+'pages/summary/index',
+    'pages/AIGame/index',
   ],
   window: {
     navigationStyle:'custom'
-  }
+  },
+  lazyCodeLoading:'requiredComponents'
 };
 
 export default config;
