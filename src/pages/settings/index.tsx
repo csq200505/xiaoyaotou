@@ -12,7 +12,7 @@ import {GameType} from "@/redux/gameReducer";
 
 const toHome = () => {
     store.dispatch(initialGameAct(GameType.PVP))
-    wx.redirectTo({
+    wx.reLaunch({
       url:'../index/index'
     })
   }

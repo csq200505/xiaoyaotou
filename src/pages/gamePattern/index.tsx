@@ -12,13 +12,13 @@ import store from "@/redux/store";
 
 const toGame = () => {
     store.dispatch(initialGameAct(GameType.PVP))
-    wx.navigateTo({
+    wx.redirectTo({
         url:'../game/index'
     })
 }
 const toAIGame = () => {
     store.dispatch(initialGameAct(GameType.PVE))
-    wx.navigateTo({
+    wx.redirectTo({
         url:'../AIGame/index'
     })
 }

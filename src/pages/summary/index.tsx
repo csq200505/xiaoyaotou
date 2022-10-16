@@ -17,7 +17,7 @@ const toGame = () => {
 
 const toHome = () => {
     store.dispatch(initialGameAct(GameType.PVP))
-    wx.redirectTo({
+    wx.reLaunch({
         url:'../index/index'
     })
 }
@@ -39,28 +39,28 @@ export default() => {
     return(
         <View className = 'summary-page'>
             <Image className='gameover'
-                   src='https://i.postimg.cc/8zTxR5N3/gameover.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/gameOver.jpeg'/>
 
             <Image className='oppenent'
-                   src='https://i.postimg.cc/VvZN7NTx/oppenent.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/oppenent.jpeg'/>
             <Image className='score1'
-            src='https://i.postimg.cc/kGrpBMTT/final.jpg'/>
+            src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/blueFinal.jpeg'/>
             <Text className='s1'>{scores.blue}</Text>
             {
                 scores.blue>=scores.red?
                     <Image className='win1'
-                           src='https://i.postimg.cc/MptNdSGG/win.jpg'/>:null
+                           src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/winner.jpeg'/>:null
             }
 
             <Image className='me'
-                   src='https://i.postimg.cc/V6YLmMcy/me.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/me.jpeg'/>
             <Image className='score2'
-                   src='https://i.postimg.cc/wxJrnJBZ/score.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/redFinal.jpeg'/>
             <Text className='s2'>{scores.red}</Text>
             {
                 scores.blue<=scores.red?
                     <Image className='win2'
-                           src='https://i.postimg.cc/MptNdSGG/win.jpg'/>:null
+                           src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/winner.jpeg'/>:null
             }
 
             <Button className='summary-button1'

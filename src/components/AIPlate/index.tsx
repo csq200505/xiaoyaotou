@@ -7,7 +7,7 @@ import '../Plate/index.css';
 import store from '@/redux/store';
 import {blueTurnAct, doCurrentStepUpdate, redTurnAct, setAbleToStep} from '@/redux/gameReducer/actions';
 import { GameStep, UpdateType } from '@/redux/gameReducer';
-import {getRandomInt} from "@/pages/game/gameStrategy";
+import {getRandomInt, nextStep} from "@/pages/game/gameStrategy";
 import {sleep} from "@/util";
 
 const baseArray = new Array(9).fill(null)
@@ -145,10 +145,10 @@ export default(props:any) => {
         if(theme == 'red' && gameState.type == GameStep.BLUE_TURN) {
             if ((gameState.currentValue!=0&& gameState.currentValue!= undefined)&& (gameState.ableToStep == true)){
                 const val = gameState.currentValue
-                console.log('调用后端接口')
-                console.log(val)
                 store.dispatch(setAbleToStep(false))
                 sleep(1000)
+
+
                 function getRandomInt():number{
                     return Math.floor(Math.random()*(9-1)+0)
                 }
@@ -165,14 +165,13 @@ export default(props:any) => {
                             "Content-Type": "application/json"
                         },
                         success(res) {
-                            console.log(res)
                             //如果后端执行失败，则随便找个空格下了
                             if(res.statusCode!=200){
                                 let grid = Array.from(blueGrid)
                                 let randomEmpty = -1
-                                while(true){
-                                    let randomEmpty = getRandomInt()
-                                    if(grid[randomEmpty]== null){
+                                while(true) {
+                                    randomEmpty = getRandomInt()
+                                    if (grid[randomEmpty] == null) {
                                         break;
                                     }
                                 }
@@ -184,13 +183,13 @@ export default(props:any) => {
                                 grid[index] = val
                                 store.dispatch(doCurrentStepUpdate(grid, redGrid, index, GameStep.BLUE_TURN))
                             }
-                           },
+                        },
                         fail(){
                             //如果后端执行失败，则随便找个空格下了
                             let grid = Array.from(blueGrid)
                             let randomEmpty = -1
                             while(true){
-                                let randomEmpty = getRandomInt()
+                                randomEmpty = getRandomInt()
                                 if(grid[randomEmpty]== null){
                                     break;
                                 }
@@ -199,6 +198,8 @@ export default(props:any) => {
                             store.dispatch(doCurrentStepUpdate(grid, redGrid,randomEmpty,GameStep.BLUE_TURN))
                         }
                     })
+
+
             }
             return;
 
@@ -283,6 +284,7 @@ export default(props:any) => {
             grid[deduceIndex(index)] = value
             store.dispatch(doCurrentStepUpdate(blueGrid, grid,deduceIndex(index),undefined))
         }
+        setOptAble(false)
     }
 
     return (

@@ -54,11 +54,12 @@ export default function AIGame(){
     }
 
     useEffect(() => {
+        console.log(state)
         //初始化完成后启动一次
                 wx.showToast({
                     title:'红方先手',
                     icon:'none',
-                    duration:3000
+                    duration:1500
                 })
                 store.dispatch(redTurnAct(0))
     },[])
@@ -67,10 +68,12 @@ export default function AIGame(){
     //在这里页面可以实时监控到游戏状态发生的变化并处理
     store.subscribe(() => {
         //每次全局发生变化就要更新状态
+
         gameState = store.getState().combineReducer.game
         gameStep =  gameState.type
         blueGrid =  gameState.gridBlue;
         redGrid = gameState.gridRed;
+
 
         //第一步，检查游戏进度是否发生了变化
         if(state.gameStep != gameStep){
@@ -80,6 +83,11 @@ export default function AIGame(){
                 setState({...state, gameStep:gameStep})
             }
         }
+
+        if(gameState.gameType!=1){
+            return;
+        }
+
         //第二步，判断状态的特点
         //如果这是初始化进程
         if(gameStep == GameStep.INTITIAL_GAME){
@@ -219,15 +227,15 @@ export default function AIGame(){
                        value = {state.value}></AIPlate>
             </View>
             <Image className='oppenent'
-                   src='https://i.postimg.cc/VvZN7NTx/oppenent.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/oppenent.jpeg'/>
             <Image className='me'
-                   src='https://i.postimg.cc/V6YLmMcy/me.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/me.jpeg'/>
             <Image className='biao1'
-                   src='https://i.postimg.cc/bJT0wQD1/biao1.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/arrowDown.jpeg'/>
             <Image className='biao2'
-                   src='https://i.postimg.cc/6qbddth3/biao2.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/arrowup.jpeg'/>
             <Image className='game-setting'
-                   src='https://i.postimg.cc/GppfCmth/shezhi.jpg'
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/settings.jpeg'
                    onClick = {toSetting}/>
 
         </View>

@@ -4,7 +4,7 @@ import Plate, { PlateInput } from "@/components/Plate"
 import * as wx from 'remax/wechat'
 import { useEffect, useState } from "react";
 import store from "@/redux/store";
-import { GameStep, UpdateType } from "@/redux/gameReducer";
+import game, { GameStep, UpdateType } from "@/redux/gameReducer";
 import { checkEaten, countResult, getRandomInt } from "./gameStrategy";
 import { blueTurnAct, blueWinAct, doXiaoUpdate, gameSetAct, initialGameAct, redTurnAct, redWinAct, tiedAct } from "@/redux/gameReducer/actions";
 import Dice from "@/components/Dice";
@@ -75,6 +75,7 @@ export default() => {
     //监听全局变化
     //在这里页面可以实时监控到游戏状态发生的变化并处理
     store.subscribe(() => {
+
         //每次全局发生变化就要更新状态
         gameState = store.getState().combineReducer.game
         gameStep =  gameState.type
@@ -94,6 +95,11 @@ export default() => {
         if(gameStep == GameStep.INTITIAL_GAME){
             setState({gameStep: GameStep.INTITIAL_GAME, value: null})
         }
+
+        if(gameState.gameType!=0){
+            return;
+        }
+
 
         //如果游戏处于更新状态中
         if(gameStep == GameStep.UPDATE_STEP){
@@ -218,15 +224,15 @@ export default() => {
                        value = {state.value}></Plate>
             </View>
             <Image className='oppenent'
-                   src='https://i.postimg.cc/VvZN7NTx/oppenent.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/oppenent.jpeg'/>
             <Image className='me'
-                   src='https://i.postimg.cc/V6YLmMcy/me.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/me.jpeg'/>
             <Image className='biao1'
-                   src='https://i.postimg.cc/bJT0wQD1/biao1.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/arrowDown.jpeg'/>
             <Image className='biao2'
-                   src='https://i.postimg.cc/6qbddth3/biao2.jpg'/>
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/arrowup.jpeg'/>
             <Image className='game-setting'
-                   src='https://i.postimg.cc/GppfCmth/shezhi.jpg'
+                   src='https://kyky-1305486145.cos.ap-guangzhou.myqcloud.com/settings.jpeg'
                    onClick = {toSetting}/>
 
         </View>
